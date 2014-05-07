@@ -6,6 +6,8 @@
 int mem_read();
 int mem_write();
 
-int fetch_inst(inst_t &inst);
+int fetch_inst(inst_t *inst);
+
+int memory_dump();
 
 #endif

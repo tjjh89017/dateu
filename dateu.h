@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "init.h"
+
 /* device path and filename */
 #define DEVICE "./device/"
 #define MEMORY "memory"
@@ -25,9 +27,10 @@ typedef struct
 }inst_t;
 
 #define INST_LEN 16
+#define REG_LEN  25
 
 extern FILE *memory;
-extern reg_t reg[25];
+extern reg_t reg[REG_LEN];
 extern mem_t inst_cache[16 * INST_LEN];
 
 /* define special register name */

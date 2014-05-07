@@ -2,13 +2,16 @@ PROG = dateu
 
 CC = gcc
 
-CFLAGS = -Os -Wall -Wextra \
+CFLAGS = -Wall -Wextra \
 	-std=gnu99
 LIBS = -levent_pthreads -levent -pthread
 LDFLAGS = 
 
 OBJS = \
-	alu.o
+	alu.o \
+	memory.o \
+	init.o \
+	main.o
 
 .c.o:
 	$(CC) $(CFLAGS) -c $*.c
