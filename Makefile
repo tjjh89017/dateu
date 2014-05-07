@@ -4,7 +4,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra \
 	-std=gnu99
-LIBS = -levent_pthreads -levent -pthread
+LIBS = 
 LDFLAGS = 
 
 OBJS = \

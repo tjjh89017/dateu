@@ -4,8 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "init.h"
-
 /* device path and filename */
 #define DEVICE "./device/"
 #define MEMORY "memory"
@@ -144,6 +142,11 @@ extern mem_t inst_cache[16 * INST_LEN];
 #define LDR ((unsigned char)0x31)
 /* compare */
 #define CMP ((unsigned char)0x40)
+
+
+#include "memory.h"
+#include "alu.h"
+#include "init.h"
 
 
 #endif

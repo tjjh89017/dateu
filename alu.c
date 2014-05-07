@@ -25,8 +25,10 @@ static int address_mode(flag_t FLAG, operand_t R, operand_t **operand, reg_t *im
 	return (int)FLAG;
 }
 
-int mov(flag_t FLAG, reg_t RT, reg_t RS)
+int mov(inst_t *inst)
 {
+	flag_t FLAG = inst->flag;
+	reg_t RT = operand[0], RS = operand[1];
 	/* check for operand0 addressing mode */
 	reg_t *operand0 = NULL, *operand1 = NULL;
 	address_mode((FLAG & FLAG_OPERAND0_MASK) >> FLAG_OPERAND0_SH, RT, &operand0, &IMM_0);

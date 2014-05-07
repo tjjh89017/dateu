@@ -23,5 +23,12 @@ int mem_write()
 
 int fetch_inst(inst_t *inst)
 {
-	
+	char *buf = (char*)inst;
+
+	fseek(memory, PC, SEEK_SET);
+	fread(buf, 1, INST_LEN, memory);
+
+	PC += INST_LEN;
+
+	return 0;
 }
