@@ -6,7 +6,7 @@ dateu
 
 intro
 =====
-* intruction length: 4 * 4 byte
+#intruction length: 4 * 4 byte
 ## 4 unsigned char
 ### op code, condition, other flags
 ## 3 unsigned int
