@@ -31,11 +31,59 @@ extern mem_t memcache[16 * 16];
 
 /* define special register name */
 /* program counter */
-#define PC  (reg[13])
+#define PC    (reg[13])
 /* stack pointer */
-#define SP  (reg[14])
+#define SP    (reg[14])
 /* stack bottom pointer */
-#define SBP (reg[15])
+#define SBP   (reg[15])
+/* flags */
+#define FLAGS (reg[16])
+
+/* define condition bits and mask */
+/*
+    8 bits
+    7 - 0
+    
+    (7) = 1 do it when zero flag
+          0 do it when NOT zero flag
+    (6) = 1 do it when neg flag
+          0 do it when NOT neg flag
+    (5) = 1 do it when carry flag
+          0 do it when NOT carry flag
+    (4) = 1 do it when overflow flag
+          0 do it when NOT overflow flag
+    (3)
+    (2)
+    (1) 
+    (0) = always do flag
+*/
+/* always mask */
+#define COND_ALW_MASK  ((unsigned char)0x01)
+/* zero mask */
+#define COND_ZERO_MASK ((unsigned char)0x80)
+/* neg mask */
+#define COND_NEG_MASK  ((unsigned char)0x40)
+/* carry mask */
+#define COND_CAR_MASK  ((unsigned char)0x20)
+/* overflow mask */
+#define COND_OVF_MASK  ((unsigned char)0x10)
+/* equ cond */
+#define COND_EQU_FLAG  ((unsigned char)0x80)
+
+/* define inst flag bit and mask */
+/*
+    16 bits
+    15 - 0
+
+    (15, 14) = operand 0 is immedite when eq 00
+                            register when eq 01
+                            direct addressing eq 10
+                            register indirect addressing eq 11
+    (13, 12) = operand 1
+    (11, 10) = operand 2
+*/
+
+
 
 /* define instruction */
 /* program end */
@@ -64,6 +112,8 @@ extern mem_t memcache[16 * 16];
 #define B   ((unsigned char)0x30)
 /* load address or for long jmup */
 #define LDR ((unsigned char)0x31)
+/* compare */
+#define CMP ((unsigned char)0x40)
 
 
 #endif
