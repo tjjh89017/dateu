@@ -24,8 +24,9 @@ typedef struct
 #define INST_LEN 16
 
 extern reg_t reg[25];
-extern mem_t memcache[16 * 16];
+extern mem_t inst_cache[16 * 16];
 
+/* device path and filename */
 #define DEVICE "./device/"
 #define MEMORY "memory"
 
@@ -82,6 +83,21 @@ extern mem_t memcache[16 * 16];
     (13, 12) = operand 1
     (11, 10) = operand 2
 */
+/* operand 0 mask */
+#define FLAG_OPERAND0_MASK ((unsigned short)0xC000)
+/* operand 1 mask */
+#define FLAG_OPERAND1_MASK ((unsigned short)0x3000)
+/* operand 2 mask */
+#define FLAG_OPERAND2_MASK ((unsigned short)0x0C00)
+/* mode */
+#define FLAG_IMME_MODE     ((unsigned short)0x0000)
+#define FLAG_REG_MODE      ((unsigned short)0x0001)
+#define FLAG_DIR_MODE      ((unsigned short)0x0002)
+#define FLAG_REGI_MODE     ((unsigned short)0x0003)
+/* shift to cmp */
+#define FLAG_OPERAND0_SH   ((unsigned short)0x000E)
+#define FLAG_OPERAND1_SH   ((unsigned short)0x000C)
+#define FLAG_OPERAND2_SH   ((unsigned short)0x000A)
 
 
 
