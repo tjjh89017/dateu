@@ -1,17 +1,20 @@
 #ifndef __DATEU_H__
 #define __DATEU_H__
 
+#include <stdio.h>
+#include <stdlib.h>
+
+/* device path and filename */
+#define DEVICE "./device/"
+#define MEMORY "memory"
+
 typedef unsigned char op_t;
 typedef unsigned char cond_t;
 typedef unsigned short flag_t;
 typedef unsigned int reg_t;
 typedef unsigned int mem_t;
+typedef unsigned int operand_t;
 
-typedef union
-{
-	reg_t reg;
-	mem_t mem;
-}operand_t;
 
 typedef struct
 {
@@ -23,25 +26,32 @@ typedef struct
 
 #define INST_LEN 16
 
+extern FILE *memory;
 extern reg_t reg[25];
-extern mem_t inst_cache[16 * 16];
-
-/* device path and filename */
-#define DEVICE "./device/"
-#define MEMORY "memory"
+extern mem_t inst_cache[16 * INST_LEN];
 
 /* define special register name */
 /* program counter */
-#define PC    (reg[13])
+#define PC        (reg[13])
 /* stack pointer */
-#define SP    (reg[14])
+#define SP        (reg[14])
 /* stack bottom pointer */
-#define SBP   (reg[15])
+#define SBP       (reg[15])
 /* flags */
-#define FLAGS (reg[16])
+#define FLAGS     (reg[16])
+/* immediate value to put */
+#define IMM_0     (reg[17])
+#define IMM_1     (reg[18])
+#define IMM_2     (reg[19])
+/* direct or reg indirect addressing mode */
+/* for address to write value */
+#define MEM_ADR   (reg[20])
+/* value to write */
+#define MEM_VALUE (reg[21])
 
 /* define condition bits and mask */
 /*
+	use: (x & COND_XXX_MASK) to check
     8 bits
     7 - 0
     
@@ -73,6 +83,7 @@ extern mem_t inst_cache[16 * 16];
 
 /* define inst flag bit and mask */
 /*
+	use: (x & FLAG_OPERAND0_MASK) to check mode
     16 bits
     15 - 0
 
