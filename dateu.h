@@ -21,9 +21,12 @@ typedef struct
 	operand_t operand[3];
 }inst_t;
 
-extern reg_t reg[25];
+#define INST_LEN 16
 
-#define DEVICE "device/"
+extern reg_t reg[25];
+extern mem_t memcache[16 * 16];
+
+#define DEVICE "./device/"
 #define MEMORY "memory"
 
 /* define special register name */
@@ -37,8 +40,10 @@ extern reg_t reg[25];
 /* define instruction */
 /* program end */
 #define END ((unsigned char)0x00)
+/* nop */
+#define NOP ((unsigned char)0x01)
 /* save or load value into register or memory */
-#define MOV ((unsigned char)0x01)
+#define MOV ((unsigned char)0x02)
 /* add two number */
 #define ADD ((unsigned char)0x10)
 /* sub two number */
@@ -55,6 +60,10 @@ extern reg_t reg[25];
 #define OR  ((unsigned char)0x22)
 /* xor two number */
 #define XOR ((unsigned char)0x23)
+/* branch for short jump */
+#define B   ((unsigned char)0x30)
+/* load address or for long jmup */
+#define LDR ((unsigned char)0x31)
 
 
 #endif

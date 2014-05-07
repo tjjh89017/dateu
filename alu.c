@@ -1,6 +1,6 @@
 #include "dateu.h"
 
-int mov(reg_t RT, reg_t RS)
+int mov(flag_t FLAG, reg_t RT, reg_t RS)
 {
 
 }
