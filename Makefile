@@ -7,7 +7,8 @@ CFLAGS = -Os -Wall -Wextra \
 LIBS = -levent_pthreads -levent -pthread
 LDFLAGS = 
 
-OBJS = 
+OBJS = \
+	alu.o
 
 .c.o:
 	$(CC) $(CFLAGS) -c $*.c

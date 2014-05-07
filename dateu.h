@@ -21,8 +21,18 @@ typedef struct
 	operand_t operand[3];
 }inst_t;
 
+extern reg_t reg[25];
+
 #define DEVICE "device/"
 #define MEMORY "memory"
+
+/* define special register name */
+/* program counter */
+#define PC  (reg[13])
+/* stack pointer */
+#define SP  (reg[14])
+/* stack bottom pointer */
+#define SBP (reg[15])
 
 /* define instruction */
 /* program end */
