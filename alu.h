@@ -3,17 +3,17 @@
 
 #include "dateu.h"
 
-int mov(inst_t *inst);
-int add(inst_t *inst);
-int sub(inst_t *inst);
-int mul(inst_t *inst);
-int div(inst_t *inst);
-int not(inst_t *inst);
-int and(inst_t *inst);
-int or(inst_t *inst);
-int xor(inst_t *inst);
-int b(inst_t *inst);
-int ldr(inst_t *inst);
-int cmp(inst_t *inst);
+int alu_mov(inst_t *inst);
+int alu_add(inst_t *inst);
+int alu_sub(inst_t *inst);
+int alu_mul(inst_t *inst);
+int alu_div(inst_t *inst);
+int alu_not(inst_t *inst);
+int alu_and(inst_t *inst);
+int alu_or(inst_t *inst);
+int alu_xor(inst_t *inst);
+int alu_b(inst_t *inst);
+int alu_ldr(inst_t *inst);
+int alu_cmp(inst_t *inst);
 
 #endif

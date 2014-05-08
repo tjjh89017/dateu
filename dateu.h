@@ -24,6 +24,19 @@ typedef struct
 	operand_t operand[3];
 }inst_t;
 
+/* for inst that has been decoded */
+typedef struct
+{
+    op_t op_code;
+    operand_t *operand[3];
+}dinst_t;
+
+typedef struct
+{
+    inst_t *inst;
+    dinst_t *dinst;
+}inst_event_t;
+
 #define INST_LEN 16
 #define REG_LEN  25
 
@@ -44,6 +57,7 @@ extern mem_t inst_cache[16 * INST_LEN];
 #define IMM_0     (reg[17])
 #define IMM_1     (reg[18])
 #define IMM_2     (reg[19])
+/* 1-address inst */
 /* direct or reg indirect addressing mode */
 /* for address to write value */
 #define MEM_ADR   (reg[20])
@@ -147,6 +161,7 @@ extern mem_t inst_cache[16 * INST_LEN];
 #include "memory.h"
 #include "alu.h"
 #include "init.h"
+#include "pipeline.h"
 
 
 #endif
