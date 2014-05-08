@@ -11,9 +11,9 @@
 typedef unsigned char op_t;
 typedef unsigned char cond_t;
 typedef unsigned short flag_t;
-typedef unsigned int reg_t;
-typedef unsigned int mem_t;
-typedef unsigned int operand_t;
+typedef unsigned long int reg_t;
+typedef unsigned long int mem_t;
+typedef unsigned long int operand_t;
 
 
 typedef struct
