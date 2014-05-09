@@ -27,10 +27,22 @@ int fetch_stage(inst_t *inst)
 	
 }
 /* decode the inst, find condition, load memory */
-int decode_stage(inst_t *inst);
-/* execute the inst, save value to register */
-int exec_stage(dinst_t *dinst);
-/* save MEM_VALUE into the memory */
-int save_stage();
+int decode_stage(inst_t *inst)
+{
 
-int pipeline_init();
+}
+/* execute the inst, save value to register */
+int exec_stage(dinst_t *dinst)
+{
+
+}
+/* save MEM_VALUE into the memory */
+int save_stage()
+{
+
+}
+
+int pipeline_init()
+{
+	
+}

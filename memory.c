@@ -32,3 +32,11 @@ int fetch_inst(inst_t *inst)
 
 	return 0;
 }
+
+int memory_dump()
+{
+	fseek(memory, 0, SEEK_SET);
+	
+
+	return 0;
+}
