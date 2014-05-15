@@ -5,17 +5,19 @@
 
 int address_mode(flag_t FLAG, operand_t R, operand_t **operand, reg_t *imm);
 
-
+/* arg => inst_event_t* */
 /* we don't use the RISC's 5 stage pipeline */
 /* fetch the code */
-int fetch_stage(inst_t *inst);
+void fetch_stage(evutil_socket_t fd, short what, void *arg);
 /* decode the inst, find condition, load memory */
-int decode_stage(inst_t *inst);
+void decode_stage(evutil_socket_t fd, short what, void *arg);
 /* execute the inst, save value to register */
-int exec_stage(dinst_t *dinst);
+void exec_stage(evutil_socket_t fd, short what, void *arg);
 /* save MEM_VALUE into the memory */
-int save_stage();
+void save_stage(evutil_socket_t fd, short what, void *arg);
 
 int pipeline_init();
+
+int pipeline_shutdown();
 
 #endif

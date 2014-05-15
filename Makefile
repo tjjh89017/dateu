@@ -4,13 +4,14 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra \
 	-std=gnu99
-LIBS = 
+LIBS = -levent_pthreads -levent -lpthread
 LDFLAGS = 
 
 OBJS = \
 	alu.o \
 	memory.o \
 	init.o \
+	pipeline.o \
 	main.o
 
 .c.o:
@@ -23,3 +24,6 @@ $(PROG): $(OBJS)
 
 clean:
 	rm -f $(PROG) $(OBJS)
+
+debug: $(PROG)
+	gdb ./$(PROG)	

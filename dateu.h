@@ -3,6 +3,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <pthread.h>
+#include <event2/event.h>
 
 /* device path and filename */
 #define DEVICE "./device/"
@@ -37,32 +40,47 @@ typedef struct
     dinst_t *dinst;
 }inst_event_t;
 
+typedef struct
+{
+    pthread_t pid;
+    pthread_mutex_t *mem_lock;
+    struct event_base *base;
+    struct event *persist_event;
+
+    void (*callback)(evutil_socket_t, short, void*);
+}stage_t;
+
 #define INST_LEN 16
 #define REG_LEN  25
 
+extern stage_t *stages;
 extern FILE *memory;
 extern reg_t reg[REG_LEN];
 extern mem_t inst_cache[16 * INST_LEN];
 
 /* define special register name */
 /* program counter */
-#define PC        (reg[13])
+#define PC          (reg[13])
 /* stack pointer */
-#define SP        (reg[14])
+#define SP          (reg[14])
 /* stack bottom pointer */
-#define SBP       (reg[15])
+#define SBP         (reg[15])
 /* flags */
-#define FLAGS     (reg[16])
+#define FLAGS       (reg[16])
 /* immediate value to put */
-#define IMM_0     (reg[17])
-#define IMM_1     (reg[18])
-#define IMM_2     (reg[19])
+#define IMM_0       (reg[17])
+#define IMM_1       (reg[18])
+#define IMM_2       (reg[19])
 /* 1-address inst */
 /* direct or reg indirect addressing mode */
 /* for address to write value */
-#define MEM_ADR   (reg[20])
+#define MEM_ADR     (reg[20])
 /* value to write */
-#define MEM_VALUE (reg[21])
+#define MEM_VALUE   (reg[21])
+/* for address to write in save stage */
+#define MEM_ADR_S   (reg[22])
+/* value to save */
+#define MEM_VALUE_S (reg[23])
 
 /* define condition bits and mask */
 /*
